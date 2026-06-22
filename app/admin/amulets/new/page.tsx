@@ -10,30 +10,34 @@ export default function NewAmuletPage() {
   const [description, setDescription] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const { error } = await supabase
-      .from("amulets")
-      .insert({
+  const { data, error } = await supabase
+    .from("amulets")
+    .insert([
+      {
         code,
         name,
         material,
         description,
-      });
+      },
+    ])
+    .select();
 
-    if (error) {
-      alert(error.message);
-      return;
-    }
+  console.log("DATA", data);
+  console.log("ERROR", error);
 
-    alert("Saved");
-
-    setCode("");
-    setName("");
-    setMaterial("");
-    setDescription("");
-  }
-
+  alert(
+    JSON.stringify(
+      {
+        data,
+        error,
+      },
+      null,
+      2
+    )
+  );
+}
   return (
     <div className="max-w-xl mx-auto p-6">
       <h1 className="text-2xl font-bold mb-6">
