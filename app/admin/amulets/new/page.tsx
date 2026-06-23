@@ -26,7 +26,7 @@ const [backFile, setBackFile] = useState<File | null>(null);
 async function handleSubmit(e: React.FormEvent) {
 e.preventDefault();
 
-```
+
 const { data: amulet, error } = await supabase
   .from("amulets")
   .insert({
@@ -72,14 +72,15 @@ setHistory("");
 
 setFrontFile(null);
 setBackFile(null);
-```
+
 
 }
 
 return ( <div className="max-w-3xl mx-auto p-6"> <h1 className="text-2xl font-bold mb-6">
-Add Amulet </h1>
+  AMULET MVP V2 TEST 20260623
+</h1>
 
-```
+
   <form onSubmit={handleSubmit} className="space-y-4">
     <input
       value={canonicalName}
@@ -201,7 +202,7 @@ Add Amulet </h1>
     </button>
   </form>
 </div>
-```
+
 
 );
 }
